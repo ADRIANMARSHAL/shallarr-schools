@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shallarr Virtual School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS with Animations & Gradient */
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --accent: #fd79a8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Stylish Header with Gradient */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 8s infinite linear;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        /* Floating Navigation */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* Modern Card Sections */
+        main {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Header -->
+    <header>
+        <h1>Shallarr Schools</h1>
+        <p>We don't make mistakes. Learning from other people's mistakes is what we do.</p>
+    </header>
+
+    <!-- Floating Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#services"><i class="fas fa-cog"></i> Services</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content with Cards -->
+    <main>
+        <section id="home" class="card">
+            <h2>Welcome to Our Website</h2>
+            <p>As a new member I presume that you have made a lot of mistakes and you want to make things right.</p>
+            <p>Well, worry no more, you know why, coz we got you. <i>(Mkurugenzi-Abel Mutua)</i></p>.</p>
+        </section>
+
+        <section id="about" class="card">
+            <h2>About Us</h2>
+            <p>We are a dedicated team that ensures you do not make mistakes in your life ever. However we do honour your privacy so much such that when using your mistakes to teach other people, none of your personal information is given out.</p>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <span style="background: #f1f1f1; padding: 0.5rem 1rem; border-radius: 50px;">Listening</span>
+                <span style="background: #f1f1f1; padding: 0.5rem 1rem; border-radius: 50px;">Councelling</span>
+                <span style="background: #f1f1f1; padding: 0.5rem 1rem; border-radius: 50px;">Learning</span>
+                <span style="background: #f1f1f1; padding: 0.5rem 1rem; border-radius: 50px;">Avoiding</span>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary);">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Listening</h3>
+                    <p>We listen and we don't judge because we undersatnd that some mistakes aren't your fault.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Councelling</h3>
+                    <p>We have the best councellers that you can get anywhere in the world including Adrian Marshal Muisyo who is well renowned for his spectacullar work.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Learning</h3>
+                    <p>You also learn from other people's mistakes so as not to find yourself in situations you shouldn't.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="card">
+            <h2>Contact Us</h2>
+                <a href="https://wa.me/+254799654040"><button type="submit">chat on Whatsapp  <i class="fab fa-whatsapp"></i></button></a>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer with Social Links -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com/adrianmuisyo."><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/AdrianM12560620"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/shall_arr/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/adrian-marshal-9a0639324/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Be%2B67NpoMR1%2BWmPqVfS3blA%3D%3D"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ADRIANMARSHAL"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; Adrian Marshal 2025 Shallarr Schools. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        // Make sections appear as you scroll
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
