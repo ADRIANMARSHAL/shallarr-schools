@@ -6,7 +6,6 @@
     <title>Shallarr Virtual School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Modern CSS with Animations & Gradient */
         :root {
             --primary: #6c5ce7;
             --secondary: #a29bfe;
@@ -29,12 +28,10 @@
             overflow-x: hidden;
         }
         
-        /* Smooth scroll behavior */
         html {
             scroll-behavior: smooth;
         }
         
-        /* Stylish Header with Gradient */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -74,7 +71,6 @@
             position: relative;
         }
         
-        /* Floating Navigation */
         nav {
             background: white;
             padding: 1rem 2rem;
@@ -122,7 +118,6 @@
             left: 0;
         }
         
-        /* Modern Card Sections */
         main {
             padding: 4rem 2rem;
             max-width: 1200px;
@@ -188,7 +183,6 @@
             margin-bottom: 1rem;
         }
         
-        /* Contact Form */
         .contact-form {
             display: grid;
             gap: 1.5rem;
@@ -237,7 +231,6 @@
             box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
         }
         
-        /* Footer */
         footer {
             background: var(--dark);
             color: white;
@@ -264,7 +257,6 @@
             transform: translateY(-5px);
         }
         
-        /* Responsive Design */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -279,13 +271,11 @@
     </style>
 </head>
 <body>
-    <!-- Animated Header -->
     <header>
-        <h1>Shallarr Schools</h1>
+        <h1>Shallarr School</h1>
         <p>We don't make mistakes. Learning from other people's mistakes is what we do.</p>
     </header>
 
-    <!-- Floating Navigation -->
     <nav>
         <ul>
             <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
@@ -295,10 +285,9 @@
         </ul>
     </nav>
 
-    <!-- Main Content with Cards -->
     <main>
         <section id="home" class="card">
-            <h2>Welcome to Our Website</h2>
+            <h2>Welcome to my Website</h2>
             <p>As a new member I presume that you have made a lot of mistakes and you want to make things right.</p>
             <p>Well, worry no more, you know why, coz we got you. <i>(Mkurugenzi-Abel Mutua)</i></p>.</p>
         </section>
@@ -339,21 +328,18 @@
         </section>
     </main>
 
-    <!-- Footer with Social Links -->
     <footer>
         <div class="social-links">
             <a href="https://www.facebook.com/adrianmuisyo."><i class="fab fa-facebook"></i></a>
             <a href="https://x.com/AdrianM12560620"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/shall_arr/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/wise_marsh/"><i class="fab fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/adrian-marshal-9a0639324/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Be%2B67NpoMR1%2BWmPqVfS3blA%3D%3D"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/ADRIANMARSHAL"><i class="fab fa-github"></i></a>
         </div>
-        <p>&copy; Adrian Marshal 2025 Shallarr Schools. All rights reserved.</p>
+        <p>&copy; Adrian Marshal 2025 Shallarr School. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Scroll Animations -->
     <script>
-        // Make sections appear as you scroll
         const sections = document.querySelectorAll('section');
         
         const observer = new IntersectionObserver((entries) => {
@@ -368,7 +354,6 @@
             observer.observe(section);
         });
         
-        // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
